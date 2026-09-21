@@ -1,0 +1,190 @@
+/* ================= RESET E GERAL ================= */
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: "Poppins", sans-serif;
+    padding-top: 33px; /* Espaço exato da Navbar */
+}
+
+/* ================= FUNDOS DAS PÁGINAS ================= */
+
+/* 1. Fundo da Página Inicial (Sem marca d'água) */
+body.home-bg {
+    background: linear-gradient(135deg, #f8f3f3, #eeeaea);
+}
+
+/* 2. Fundo da Página de Login */
+body.login-bg {
+    background: linear-gradient(#000000c0, #000000c0), url("/image/corte 1.jpeg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    padding-top: 0; /* Login não tem navbar no topo atrapalhando */
+}
+
+/* 3. Fundo da Página de Agendamento (COM Marca d'água) */
+body.agendamento-bg {
+    background: linear-gradient(135deg, #f8f3f3, #eeeaea);
+}
+
+/* A mágica da marca d'água só acontece no agendamento */
+body.agendamento-bg::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/image/LOGO%20JHON%20BARBEARIA%202.png");
+    background-repeat: repeat;
+    background-size: 150px;
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Garante que o card de agendamento fique acima da marca d'água */
+.agendamento-bg .card {
+    position: relative;
+    z-index: 1;
+}
+
+/* ================= COMPONENTES GERAIS ================= */
+.btn {
+    border-radius: 12px !important;
+    font-weight: 600;
+}
+
+/* ================= NAVBAR & FRAGMENTS ================= */
+.navbar-brand img {
+    height: 40px;
+    margin-right: 8px;
+}
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #000;
+}
+
+/* ================= TELA DE LOGIN / CADASTRO ================= */
+.login-card {
+    background: #ffffffd9;
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 380px;
+    width: 100%;
+    overflow: hidden;
+}
+.logo-login {
+    width: 120px;
+    display: block;
+    margin: 0 auto 15px auto;
+}
+.form-section {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+.form-section.active {
+    display: block;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= CARDS DA HOME ================= */
+.hero-img {
+    height: 300px;
+    object-fit: cover;
+    width: 100%;
+}
+.service-card {
+    max-width: 500px;
+    border-radius: 12px;
+}
+.horario-card {
+    background-color: #fff8d6;
+    border: 2px solid #f1c40f;
+    border-radius: 12px;
+}
+#galeria img {
+    height: 380px;
+    object-fit: cover;
+    border-radius: 12px;
+    width: 100%;
+}
+#endereco .card {
+    border: 2px solid #f1c40f;
+    background: #fff8d6;
+    border-radius: 12px;
+}
+
+/* ================= ADMIN ================= */
+body.admin-bg {
+    background: #f4f6f8;
+}
+
+.admin-shell {
+    max-width: 1320px;
+}
+
+.metric,
+.admin-panel {
+    background: #ffffff;
+    border: 1px solid #e6e8eb;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(17, 24, 39, 0.06);
+}
+
+.metric {
+    padding: 18px;
+    min-height: 124px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.metric span,
+.metric small {
+    color: #667085;
+    font-weight: 600;
+}
+
+.metric strong {
+    display: block;
+    font-size: 1.6rem;
+    line-height: 1.2;
+    color: #111827;
+}
+
+.admin-panel {
+    padding: 20px;
+}
+
+.admin-panel h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.admin-panel .table {
+    margin-bottom: 0;
+}
+
+.admin-panel input,
+.admin-panel select {
+    min-width: 120px;
+}
+
+.horarios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(84px, 1fr));
+    gap: 8px;
+}
+
+.horario-btn.active {
+    background: #111111;
+    color: #ffffff;
+    border-color: #111111;
+}
