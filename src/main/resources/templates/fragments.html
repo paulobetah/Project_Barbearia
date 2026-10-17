@@ -30,7 +30,8 @@
                 </th:block>
 
                 <th:block th:if="${session.usuarioLogado != null}">
-                    <a th:if="${session.usuarioLogado.equipe}" href="/gestao/agenda" class="btn btn-outline-warning fw-bold">Gestão administrativa</a>
+                    <a th:if="${session.usuarioLogado.admin}" href="/admin" class="btn btn-warning fw-bold">Dashboard</a>
+                    <a th:if="${session.usuarioLogado.equipe and !session.usuarioLogado.admin}" href="/gestao/agenda" class="btn btn-outline-warning fw-bold">Agenda do Dia</a>
                     <span class="text-white fw-bold" th:text="'Olá, ' + ${#strings.arraySplit(session.usuarioLogado.nome, ' ')[0]} + '!'"></span>
                     <div class="dropdown">
                         <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userMenu" data-bs-toggle="dropdown">

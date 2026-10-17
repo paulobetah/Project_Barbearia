@@ -33,7 +33,7 @@ public interface AgendamentoRepository extends JpaRepository<Agendamento, Long> 
     long countByStatusAndDataHoraBetween(String status, LocalDateTime inicio, LocalDateTime fim);
 
     @Query("""
-            select coalesce(sum(s.preco), 0)
+            select sum(s.preco)
             from Agendamento a
             join a.servicos s
             where a.status <> 'Cancelado' and a.dataHora between :inicio and :fim
@@ -61,13 +61,13 @@ public interface AgendamentoRepository extends JpaRepository<Agendamento, Long> 
     List<Object[]> barbeirosComMaisAtendimentos();
 
     @Query("""
-            select b.nome, coalesce(sum(s.preco), 0)
+            select b.nome, sum(s.preco)
             from Agendamento a
             join a.barbeiro b
             join a.servicos s
             where a.status <> 'Cancelado'
             group by b.nome
-            order by coalesce(sum(s.preco), 0) desc
+            order by sum(s.preco) desc
             """)
     List<Object[]> faturamentoPorBarbeiro();
 

@@ -17,6 +17,10 @@
     <span th:text="${mensagemSucesso}"></span>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
+<div th:if="${erro != null}" class="alert alert-danger alert-dismissible fade show text-center fw-bold m-0" role="alert" style="border-radius: 0; z-index: 9999;">
+    <span th:text="${erro}"></span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
 
 <header id="home">
     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">

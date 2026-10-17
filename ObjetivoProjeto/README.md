@@ -30,17 +30,17 @@ O **Jhon Barbearia** é uma plataforma web que permite:
 
 ## Stack Tecnológica
 
-| Camada | Tecnologia |
-|---|---|
-| **Linguagem** | Java 25 |
-| **Framework** | Spring Boot 4.0.5 |
+| Camada        | Tecnologia                         |
+| ------------- | ---------------------------------- |
+| **Linguagem** | Java 25                            |
+| **Framework** | Spring Boot 4.0.5                  |
 | **Segurança** | Spring Security 6 (BCrypt + roles) |
-| **Frontend** | Thymeleaf + Bootstrap 5.3 + CSS3 |
-| **Banco** | MySQL 8 (produção) / H2 (testes) |
-| **ORM** | Spring Data JPA / Hibernate |
-| **Build** | Maven + Wrapper |
-| **Email** | JavaMailSender (SMTP Gmail) |
-| **Template** | Thymeleaf fragments + layout |
+| **Frontend**  | Thymeleaf + Bootstrap 5.3 + CSS3   |
+| **Banco**     | MySQL 8 (produção) / H2 (testes)   |
+| **ORM**       | Spring Data JPA / Hibernate        |
+| **Build**     | Maven + Wrapper                    |
+| **Email**     | JavaMailSender (SMTP Gmail)        |
+| **Template**  | Thymeleaf fragments + layout       |
 
 ### Dependências principais (`pom.xml`)
 
@@ -179,48 +179,48 @@ BARBEIRO_ESCALAS
 
 ### Públicas
 
-| Método | Rota | Descrição |
-|---|---|---|
-| `GET` | `/` | Landing page com serviços, horários, galeria |
-| `GET` | `/login` | Tela de login |
-| `GET` | `/cadastro` | Abre a aba de cadastro na tela de login |
-| `GET` | `/api/agendamentos/horarios-disponiveis` | API REST que retorna horários livres para um barbeiro + data |
+| Método | Rota                                     | Descrição                                                    |
+| ------ | ---------------------------------------- | ------------------------------------------------------------ |
+| `GET`  | `/`                                      | Landing page com serviços, horários, galeria                 |
+| `GET`  | `/login`                                 | Tela de login                                                |
+| `GET`  | `/cadastro`                              | Abre a aba de cadastro na tela de login                      |
+| `GET`  | `/api/agendamentos/horarios-disponiveis` | API REST que retorna horários livres para um barbeiro + data |
 
 ### Autenticadas (cliente logado)
 
-| Método | Rota | Descrição |
-|---|---|---|
-| `GET` | `/agendamento?barbeiroId=X` | Tela de agendamento com serviços e horários |
-| `POST` | `/agendamento/salvar` | Confirma o agendamento |
-| `GET` | `/meus-agendamentos` | Histórico do cliente |
-| `POST` | `/meus-agendamentos/cancelar` | Cancela um agendamento |
-| `GET` | `/perfil` | Visualiza/edita dados pessoais |
-| `POST` | `/perfil/atualizar` | Salva alterações do perfil |
+| Método | Rota                          | Descrição                                   |
+| ------ | ----------------------------- | ------------------------------------------- |
+| `GET`  | `/agendamento?barbeiroId=X`   | Tela de agendamento com serviços e horários |
+| `POST` | `/agendamento/salvar`         | Confirma o agendamento                      |
+| `GET`  | `/meus-agendamentos`          | Histórico do cliente                        |
+| `POST` | `/meus-agendamentos/cancelar` | Cancela um agendamento                      |
+| `GET`  | `/perfil`                     | Visualiza/edita dados pessoais              |
+| `POST` | `/perfil/atualizar`           | Salva alterações do perfil                  |
 
 ### Gestão (barbeiros, admin, proprietário)
 
-| Método | Rota | Descrição |
-|---|---|---|
-| `GET` | `/gestao/agenda` | Agenda operacional do dia (filtro por data) |
+| Método | Rota             | Descrição                                   |
+| ------ | ---------------- | ------------------------------------------- |
+| `GET`  | `/gestao/agenda` | Agenda operacional do dia (filtro por data) |
 
 ### Administrativo (admin, proprietário)
 
-| Método | Rota | Descrição |
-|---|---|---|
-| `GET` | `/admin` | Dashboard com métricas + CRUDs |
-| `POST` | `/admin/barbeiros/salvar` | Cria/edita barbeiro |
-| `POST` | `/admin/barbeiros/excluir` | Exclui barbeiro (com proteção de integridade) |
-| `POST` | `/admin/servicos/salvar` | Cria/edita serviço |
-| `POST` | `/admin/servicos/excluir` | Exclui serviço |
-| `POST` | `/admin/clientes/permissao` | Altera papel e status de um usuário |
+| Método | Rota                        | Descrição                                     |
+| ------ | --------------------------- | --------------------------------------------- |
+| `GET`  | `/admin`                    | Dashboard com métricas + CRUDs                |
+| `POST` | `/admin/barbeiros/salvar`   | Cria/edita barbeiro                           |
+| `POST` | `/admin/barbeiros/excluir`  | Exclui barbeiro (com proteção de integridade) |
+| `POST` | `/admin/servicos/salvar`    | Cria/edita serviço                            |
+| `POST` | `/admin/servicos/excluir`   | Exclui serviço                                |
+| `POST` | `/admin/clientes/permissao` | Altera papel e status de um usuário           |
 
 ### Autenticação
 
-| Método | Rota | Descrição |
-|---|---|---|
-| `POST` | `/login` | Login processing (Spring Security) |
-| `POST` | `/sair` | Logout |
-| `POST` | `/recuperar-senha` | Envia senha temporária por email |
+| Método | Rota               | Descrição                          |
+| ------ | ------------------ | ---------------------------------- |
+| `POST` | `/login`           | Login processing (Spring Security) |
+| `POST` | `/sair`            | Logout                             |
+| `POST` | `/recuperar-senha` | Envia senha temporária por email   |
 
 ---
 
@@ -228,11 +228,11 @@ BARBEIRO_ESCALAS
 
 ### Papéis (roles)
 
-| Papel | Acesso |
-|---|---|
-| `CLIENTE` | Agendamento, perfil, histórico próprio |
-| `BARBEIRO` | Tudo de CLIENTE + agenda operacional do dia |
-| `ADMIN` | Tudo de BARBEIRO + dashboard + CRUD completo |
+| Papel          | Acesso                                                     |
+| -------------- | ---------------------------------------------------------- |
+| `CLIENTE`      | Agendamento, perfil, histórico próprio                     |
+| `BARBEIRO`     | Tudo de CLIENTE + agenda operacional do dia                |
+| `ADMIN`        | Tudo de BARBEIRO + dashboard + CRUD completo               |
 | `PROPRIETARIO` | Mesmo que ADMIN (papel distinto para diferenciação futura) |
 
 ### Regras no SecurityConfig
@@ -295,17 +295,17 @@ java -jar target/barbearia-0.0.1-SNAPSHOT.jar
 
 ## Variáveis de Ambiente
 
-| Variável | Padrão | Descrição |
-|---|---|---|
-| `DB_URL` | `jdbc:mysql://localhost:3306/barbearia?...` | URL de conexão MySQL |
-| `DB_USERNAME` | `root` | Usuário do banco |
-| `DB_PASSWORD` | *(vazio)* | Senha do banco |
-| `DB_DRIVER` | `com.mysql.cj.jdbc.Driver` | Driver JDBC |
-| `JPA_SHOW_SQL` | `false` | Exibir SQL no console |
-| `MAIL_HOST` | `smtp.gmail.com` | Servidor SMTP |
-| `MAIL_PORT` | `587` | Porta SMTP |
-| `MAIL_USERNAME` | *(vazio)* | Email remetente |
-| `MAIL_PASSWORD` | *(vazio)* | Senha do email (app password) |
+| Variável        | Padrão                                      | Descrição                     |
+| --------------- | ------------------------------------------- | ----------------------------- |
+| `DB_URL`        | `jdbc:mysql://localhost:3306/barbearia?...` | URL de conexão MySQL          |
+| `DB_USERNAME`   | `root`                                      | Usuário do banco              |
+| `DB_PASSWORD`   | _(vazio)_                                   | Senha do banco                |
+| `DB_DRIVER`     | `com.mysql.cj.jdbc.Driver`                  | Driver JDBC                   |
+| `JPA_SHOW_SQL`  | `false`                                     | Exibir SQL no console         |
+| `MAIL_HOST`     | `smtp.gmail.com`                            | Servidor SMTP                 |
+| `MAIL_PORT`     | `587`                                       | Porta SMTP                    |
+| `MAIL_USERNAME` | _(vazio)_                                   | Email remetente               |
+| `MAIL_PASSWORD` | _(vazio)_                                   | Senha do email (app password) |
 
 > **Segurança:** Nenhuma senha está hardcoded no código-fonte. Todas são injetadas via variáveis de ambiente com fallback seguro.
 
@@ -316,14 +316,11 @@ java -jar target/barbearia-0.0.1-SNAPSHOT.jar
 ### Paleta de Cores
 
 ```css
---gold:        #c9a04e    /* dourado premium - cor principal */
---gold-light:  #dbb45c    /* hover de botões */
---gold-dark:   #a8833a    /* active de botões */
-
---bg:          #faf9f7    /* fundo principal - off-white */
---bg-card:     #ffffff     /* superfície de cards */
---bg-dark:     #0f0f1a    /* navbar e footer - deep navy */
---text:        #1a1a2e    /* texto principal */
+--gold: #c9a04e /* dourado premium - cor principal */ --gold-light: #dbb45c
+  /* hover de botões */ --gold-dark: #a8833a /* active de botões */
+  --bg: #faf9f7 /* fundo principal - off-white */ --bg-card: #ffffff
+  /* superfície de cards */ --bg-dark: #0f0f1a /* navbar e footer - deep navy */
+  --text: #1a1a2e /* texto principal */;
 ```
 
 ### Tipografia
@@ -343,6 +340,7 @@ java -jar target/barbearia-0.0.1-SNAPSHOT.jar
 ### Responsividade
 
 Breakpoints:
+
 - **768px:** navbar reduz para 56px, hero para 260px, fonte dos títulos reduz
 - **576px:** botões e logo da navbar menores
 

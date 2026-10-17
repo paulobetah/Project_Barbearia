@@ -30,10 +30,10 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(auth -> auth
                 .requestMatchers("/", "/login", "/cadastro", "/recuperar-senha", "/api/agendamentos/horarios-disponiveis",
-                        "/css/**", "/js/**", "/image/**").permitAll()
-                .requestMatchers("/admin/**").hasAnyRole("ADMIN", "PROPRIETARIO")
-                .requestMatchers("/gestao/**").hasAnyRole("ADMIN", "PROPRIETARIO", "BARBEIRO")
-                .requestMatchers("/agendamento/**", "/meus-agendamentos/**", "/perfil/**").authenticated()
+                        "/termos", "/privacidade", "/css/**", "/js/**", "/image/**").permitAll()
+                .requestMatchers("/admin", "/admin/**").hasAnyRole("ADMIN", "PROPRIETARIO")
+                .requestMatchers("/gestao", "/gestao/**").hasAnyRole("ADMIN", "PROPRIETARIO", "BARBEIRO")
+                .requestMatchers("/agendamento", "/agendamento/**", "/meus-agendamentos", "/meus-agendamentos/**", "/perfil", "/perfil/**").authenticated()
                 .anyRequest().permitAll()
         );
 

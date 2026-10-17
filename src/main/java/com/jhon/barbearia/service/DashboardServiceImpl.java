@@ -57,19 +57,32 @@ public class DashboardServiceImpl implements DashboardService {
     }
 
     private List<IndicadorRanking> converterRanking(List<Object[]> linhas) {
+        if (linhas == null) return List.of();
         return linhas.stream()
                 .limit(8)
-                .map(linha -> new IndicadorRanking(String.valueOf(linha[0]), ((Number) linha[1]).longValue()))
+                .map(linha -> new IndicadorRanking(
+                        String.valueOf(linha[0]),
+                        linha[1] instanceof Number n ? n.longValue() : 0L
+                ))
                 .toList();
     }
 
     private List<IndicadorFinanceiro> converterComissoes(List<Object[]> linhas) {
+        if (linhas == null) return List.of();
         return linhas.stream()
                 .limit(8)
-                .map(linha -> new IndicadorFinanceiro(
-                        String.valueOf(linha[0]),
-                        ((BigDecimal) linha[1]).multiply(new BigDecimal("0.40"))
-                ))
+                .map(linha -> {
+                    BigDecimal valor = BigDecimal.ZERO;
+                    if (linha[1] instanceof BigDecimal bd) {
+                        valor = bd;
+                    } else if (linha[1] instanceof Number n) {
+                        valor = BigDecimal.valueOf(n.doubleValue());
+                    }
+                    return new IndicadorFinanceiro(
+                            String.valueOf(linha[0]),
+                            valor.multiply(new BigDecimal("0.40"))
+                    );
+                })
                 .toList();
     }
 }

@@ -14,21 +14,26 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(GlobalExceptionHandler.class);
+
     @ExceptionHandler(RecursoNaoEncontradoException.class)
     public String handleRecursoNaoEncontrado(RecursoNaoEncontradoException ex, RedirectAttributes redirectAttributes) {
+        log.warn("Recurso não encontrado: {}", ex.getMessage());
         redirectAttributes.addFlashAttribute("erro", ex.getMessage());
         return "redirect:/";
     }
 
     @ExceptionHandler(NegocioException.class)
     public String handleNegocio(NegocioException ex, RedirectAttributes redirectAttributes) {
+        log.warn("Regra de negócio violada: {}", ex.getMessage());
         redirectAttributes.addFlashAttribute("erro", ex.getMessage());
         return "redirect:/";
     }
 
     @ExceptionHandler(Exception.class)
     public String handleGenerico(Exception ex, RedirectAttributes redirectAttributes) {
-        redirectAttributes.addFlashAttribute("erro", "Ocorreu um erro inesperado. Tente novamente.");
+        log.error("Erro inesperado capturado pelo GlobalExceptionHandler: ", ex);
+        redirectAttributes.addFlashAttribute("erro", "Ocorreu um erro inesperado: " + ex.getMessage());
         return "redirect:/";
     }
 }
